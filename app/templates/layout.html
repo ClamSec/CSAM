@@ -1,0 +1,14 @@
+<html>
+	<head>
+	{% if title %}
+		<title>{{ title }} - CSAM</title>
+	{% else %}
+		<title>CSAM</title>
+	{% endif %}
+	</head>
+	<body>
+		<h1>Cyber Security Awareness Module</h1>
+		<hr>
+		{% block content %}{% endblock %}
+	</body>
+</html>
