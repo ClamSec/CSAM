@@ -16,14 +16,18 @@ def index():
 # Provide page for an About section.
 @app.route("/about/")
 def about():
-  return render_template("about.html", title="About Us")
+	return render_template("about.html", title="About Us")
 
 #Provide page for contact info.
 @app.route("/contact/")
 def contact():
-  return render_template("contact.html", title="Contact Info")
+	return render_template("contact.html", title="Contact Info")
 
 # Provide pages for password related modules.
+@app.route("/password-module/")
+def passwordModule():
+	return render_template("password-module.html", title="Passwords")
+
 @app.route("/password-cracking/")
 def passwordCracking():
 	return render_template("password-cracking.html", title="Password Cracking")
