@@ -1,43 +1,52 @@
 {% extends "layout.html" %}
 {% block content %}
+    <div class="jumbotron">
+      <div class="container">
+        <h1>Cyber Security Awareness Module</h1>
+        <p>Please pick a module below to begin.</p>
+      </div>
+    </div>
+
+<!-- Module Table -->
     <div class="container">
+    <!-- Row 1 -->
+      <div class="row">
+        <div class="col-md-4">
+          <h2>Password Strength & Cracking</h2>
+          <p>Crack passwords like a real-life attacker and learn more about password strength and the dangers of default passwords. [Under Construction]</p>
+          <p><a class="btn btn-default" href="{{ url_for('passwordModule') }}" role="button">Begin Module&raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+          <h2>Web Security</h2>
+          <p>Protip: Look for the little lock icon and think before you click. [Under Construction]</p>
+          <p><a class="btn btn-default" href="#" role="button">Begin Module&raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+          <h2>Social Engineering and You</h2>
+          <p>Click the button below. Come on, you can trust me. [Under Construction]</p>
+          <p><a class="btn btn-default" href="#" role="button">Begin Module &raquo;</a></p>
+        </div>
+      </div>
+    <!-- Row 2 -->
+      <div class="row">
+        <div class="col-md-4">
+          <h2>Smartphone Security</h2>
+          <blockquote>
+            <p>“There will come a time when it isn't 'They're spying on me through my phone' anymore. Eventually, it will be 'My phone is spying on me'.”</p>
+            <p><small>Phillip K. Dick</small></p>
+          </blockquote>
+          <p>[Under Construction]</p>
+          <p><a class="btn btn-default" href="#" role="button">Begin Module&raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+          <h2>Malware</h2>
+          <p>Malware: Ancient Latin for "Now I have to reformat EVERYTHING and learn to stop clicking fake download ads." [Under Construction]</p>
+          <p><a class="btn btn-default" href="#" role="button">Begin Module&raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+          <h2>Rogue Devices</h2>
+          <p>Inserting a random USB drive into your computer is like jumping into dumpsters head-first, sometimes you find a slightly used HD TV and sometimes you find used hypodermic needles.</p>
+          <p><a class="btn btn-default" href="#" role="button">Begin Module&raquo;</a></p>
+      </div>
 
-      <div class="row row-offcanvas row-offcanvas-right">
-
-        <div class="col-xs-12 col-sm-9">
-          <p class="pull-right visible-xs">
-            <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
-          </p>
-          <div class="jumbotron">
-            <h1>The Columbus State University Cyber Security Awareness Module</h1>
-            <p>Please pick any module below to begin.</p>
-          </div>
-          <div class="row">
-            <div class="col-xs-6 col-lg-4">
-              <h2>Password Strength & Cracking</h2>
-              <p>Crack passwords like a real-life attacker and learn more about password strength and the dangers of default passwords. [Under Construction]</p>
-              <p><a class="btn btn-default" href="{{ url_for('passwordModule') }}" role="button">Begin Module&raquo;</a></p>
-            </div><!--/.col-xs-6.col-lg-4-->
-            <div class="col-xs-6 col-lg-4">
-              <h2>Web Security</h2>
-              <p>Protip: Look for the little lock icon. [Under Construction]</p>
-              <p><a class="btn btn-default" href="#" role="button">Begin Module&raquo;</a></p>
-            </div><!--/.col-xs-6.col-lg-4-->
-            <div class="col-xs-6 col-lg-4">
-              <h2>Social Engineering and You</h2>
-              <p>Click the button below. Come on, you can trust me. [Under Construction]</p>
-              <p><a class="btn btn-default" href="#" role="button">Begin Module &raquo;</a></p>
-            </div><!--/.col-xs-6.col-lg-4-->
-            <div class="col-xs-6 col-lg-4">
-              <h2>Smartphone Security</h2>
-              <p> “There will come a time when it isn't 'They're spying on me through my phone' anymore. Eventually, it will be 'My phone is spying on me'.” - Phillip K. Dick [Under Construction]</p>
-              <p><a class="btn btn-default" href="#" role="button">Begin Module&raquo;</a></p>
-            </div><!--/.col-xs-6.col-lg-4-->
-            <div class="col-xs-6 col-lg-4">
-              <h2>Malware</h2>
-              <p> Malware: Ancient Latin for "Now I have to reformat EVERYTHING and learn to stop clicking fake download ads." [Under Construction]</p>
-              <p><a class="btn btn-default" href="#" role="button">Begin Module&raquo;</a></p>
-            </div><!--/.col-xs-6.col-lg-4-->
-          </div><!--/row-->
-        </div><!--/.col-xs-12.col-sm-9-->
 {% endblock %}
