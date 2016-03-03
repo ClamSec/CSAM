@@ -1,5 +1,9 @@
 from flask import render_template
+from flask import request
 from app import app
+
+import hashlib
+import cracker
 
 # Handle errors.
 @app.errorhandler(404)
@@ -31,6 +35,13 @@ def passwordModule():
 @app.route("/password-cracking/")
 def passwordCracking():
 	return render_template("password-cracking.html", title="Password Cracking")
+
+@app.route("/password-cracking/", methods=["POST"])
+def passwordCrackingPost():
+	password = request.form["password"]
+	hashedPassword = hashlib.md5(password.rstrip().encode('utf-8')).hexdigest()
+	crackerResults = cracker.dictionaryAttack(hashedPassword)
+	return crackerResults
 
 @app.route("/password-strength/")
 def passwordStrength():
