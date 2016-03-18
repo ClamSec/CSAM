@@ -40,11 +40,9 @@ def passwordCrackingPost():
     password = request.form["password"]
     option = request.form["option"]
     if option == "dictionary":
-        crackerResults = cracker.dictionaryAttack(password)
-        return render_template("password_cracking_results.html", results=crackerResults)
+        return render_template("password_cracking_results.html", results=cracker.makeCrackTable(password, 'dict'))
     else:
-        crackerResults = cracker.bruteForceAttack(password)
-        return render_template("password_cracking_results.html", results=crackerResults)
+        return render_template("password_cracking_results.html", results=cracker.makeCrackTable(password, 'brute'))
 
 @app.route("/password-strength/")
 def passwordStrength():

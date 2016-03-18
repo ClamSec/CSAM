@@ -5,9 +5,13 @@ SYMBOLS = '!@#$%^&*(){}[]:";<>?,./\'\\' #testing, may be incomplete
 
 '''
 Given a password, a local dictionary is enumerated to see
-how quickly a match can be found
+how quickly a match can be found. A dictionary is returned giving
+information about the attack.
+
+messy, needs to be refactored
 '''
 def dictionaryAttack(password):
+    results = {}
     file = open("app/basicDictionary.txt")
     start = timer()
     count = 0
@@ -16,17 +20,30 @@ def dictionaryAttack(password):
         if word.rstrip() == password:
             stop = timer()
             duration = stop - start
-            #return 'Found the password in ' + str(stop - start) + ' seconds.'
-            return 'Found the password in ' + str(round(duration, 2)) + ' seconds. Tried '+ str(count)+ ' passwords, for an average of '+ str(int(count / duration))+ ' password attempts/second.'
-    return "Password not cracked, not in dictionary."
+            results['count'] = count
+            results['duration'] = round(duration, 2)
+            results['rate'] = int(count / duration)
+            results['found'] = True
+            return results
+    stop = timer()
+    duration = stop - start
+    results['count'] = count
+    results['duration'] = round(duration, 2)
+    results['rate'] = int(count / duration)
+    results['found'] = False
+    return results
+    
 
 '''
 Given a password, details such as length and types of characters will be used 
-to craft a brute force attack against the password
+to craft a brute force attack against the password. A dictionary is returned giving
+information about the attack.
 
-Amount of time is recorded and returned as a result
+messy, needs to be refactored
 '''
 def bruteForceAttack(password):
+    results = {}
+    
     numberofchars = len(password)
     
     containsUpper = False
@@ -59,8 +76,18 @@ def bruteForceAttack(password):
         if p == password:
             stop = timer()
             duration = stop - start
-            return 'Found the password in ' + str(round(duration, 2)) + ' seconds. Tried '+ str(count)+ ' passwords, for an average of '+ str(int(count / duration))+ ' password attempts/second.'
-    return 'not found'
+            results['count'] = count
+            results['duration'] = round(duration, 2)
+            results['rate'] = int(count / duration)
+            results['found'] = True
+            return results
+    stop = timer()
+    duration = stop - start
+    results['count'] = count
+    results['duration'] = round(duration, 2)
+    results['rate'] = int(count / duration)
+    results['found'] = False
+    return results
 
 '''
 Given a character set as a string and a length, creates a generator that yields a
@@ -73,7 +100,7 @@ def bruteforce(charset, maxlength):
 
 '''
 Determines what requirements a given password satisfy, returns a dictionary where
-keys are requirements and their values are whether or not they have been met
+keys are requirements and their values are whether or not they have been met. 
 '''
 def passwordChecker(password):
     
@@ -123,7 +150,7 @@ def passwordChecker(password):
     else:
         results['symbols'] = False
         
-    if dictionaryAttack(password) != 'Password not cracked, not in dictionary.':
+    if dictionaryAttack(password)['found'] == True:
         results['dict'] = True
     else:
         results['dict'] = False
@@ -131,10 +158,13 @@ def passwordChecker(password):
     return results
 
 '''
+Create a dictionary that will be used to display a table
 '''
 def makeComplexityTable(password):
     results = passwordChecker(password)
+    
     table = {}
+    
     if results['minchars']:
         table['Minimum # of characters'] = u'\u2713'
     else:
@@ -161,13 +191,33 @@ def makeComplexityTable(password):
         table['Symbols'] = 'x'
     
     if results['dict']:
-        table['Contained in a dictionary'] = 'x'
+        table['Not contained in a dictionary'] = 'x'
     else:
-        table['Contained in a dictionary'] = u'\u2713'
-        
+        table['Not contained in a dictionary'] = u'\u2713'
         
     return table
+ 
     
+'''
+Create a dictionary that will be used to display a table
+'''
+def makeCrackTable(password, method):
+    
+    table = {}
+    results = {}
+    
+    if method == 'brute':
+        results = bruteForceAttack(password)
+    
+    elif method == 'dict':
+        results = dictionaryAttack(password)
+        
+    table['Time spent looking for the password'] = results['duration']
+    table['# of passwords tried'] = results['count']
+    table['Rate'] = str(results['rate']) + ' passwords / second'
+    table['Found'] = results['found']
+      
+    return table
 
 '''
 '''
