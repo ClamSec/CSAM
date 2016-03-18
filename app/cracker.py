@@ -7,30 +7,25 @@ SYMBOLS = '!@#$%^&*(){}[]:";<>?,./\'\\' #testing, may be incomplete
 Given a password, a local dictionary is enumerated to see
 how quickly a match can be found. A dictionary is returned giving
 information about the attack.
-
-messy, needs to be refactored
 '''
 def dictionaryAttack(password):
+    
     results = {}
     file = open("app/basicDictionary.txt")
     start = timer()
     count = 0
+    flag = False
     for word in file:
         count += 1
         if word.rstrip() == password:
-            stop = timer()
-            duration = stop - start
-            results['count'] = count
-            results['duration'] = round(duration, 2)
-            results['rate'] = int(count / duration)
-            results['found'] = True
-            return results
+            flag = True
+            break
     stop = timer()
     duration = stop - start
     results['count'] = count
     results['duration'] = round(duration, 2)
     results['rate'] = int(count / duration)
-    results['found'] = False
+    results['found'] = flag
     return results
     
 
@@ -38,10 +33,9 @@ def dictionaryAttack(password):
 Given a password, details such as length and types of characters will be used 
 to craft a brute force attack against the password. A dictionary is returned giving
 information about the attack.
-
-messy, needs to be refactored
 '''
 def bruteForceAttack(password):
+    
     results = {}
     
     numberofchars = len(password)
@@ -71,22 +65,18 @@ def bruteForceAttack(password):
     count = 0
     gen = bruteforce(charset, numberofchars) 
     start = timer()
+    flag = False
     for p in gen:
         count += 1
         if p == password:
-            stop = timer()
-            duration = stop - start
-            results['count'] = count
-            results['duration'] = round(duration, 2)
-            results['rate'] = int(count / duration)
-            results['found'] = True
-            return results
+            flag = True
+            break
     stop = timer()
     duration = stop - start
     results['count'] = count
     results['duration'] = round(duration, 2)
     results['rate'] = int(count / duration)
-    results['found'] = False
+    results['found'] = flag
     return results
 
 '''
@@ -94,6 +84,7 @@ Given a character set as a string and a length, creates a generator that yields 
 new combination of a brute force sequence
 '''
 def bruteforce(charset, maxlength):
+    
     return (''.join(candidate)
         for candidate in itertools.chain.from_iterable(itertools.product(charset, repeat=i)
         for i in range(1, maxlength + 1)))      
@@ -104,6 +95,8 @@ keys are requirements and their values are whether or not they have been met.
 '''
 def passwordChecker(password):
     
+    MINIMUM_NUMBER_OF_CHARS = 8
+    
     results = {}
     
     containsLower = False
@@ -111,10 +104,9 @@ def passwordChecker(password):
     containsSymbols = False
     containsNumbers = False
     numberofchars = len(password)
+    results['numChars'] = numberofchars
     
-    results['numchars'] = numberofchars
-    
-    
+
     for ch in password:
         if ch in SYMBOLS:
             containsSymbols = True
@@ -125,7 +117,7 @@ def passwordChecker(password):
         elif ch in string.ascii_lowercase:
             containsLower = True
             
-    if numberofchars >= 8:
+    if numberofchars >= MINIMUM_NUMBER_OF_CHARS:
         results['minchars'] = True
     else:
         results['minchars'] = False
@@ -161,6 +153,7 @@ def passwordChecker(password):
 Create a dictionary that will be used to display a table
 '''
 def makeComplexityTable(password):
+    
     results = passwordChecker(password)
     
     table = {}
@@ -212,22 +205,45 @@ def makeCrackTable(password, method):
     elif method == 'dict':
         results = dictionaryAttack(password)
         
-    table['Time spent looking for the password'] = results['duration']
-    table['# of passwords tried'] = results['count']
-    table['Rate'] = str(results['rate']) + ' passwords / second'
+    table['Time spent looking for the password'] = '{:,.2f} s'.format(results['duration'])
+    table['# of passwords tried'] = '{:,}'.format(results['count'])
+    table['Rate'] = '{:,}'.format(results['rate']) + ' passwords / second'
     table['Found'] = results['found']
       
     return table
 
 '''
+Estimates the time that it will take for a password to be cracked, returns a
+dictionary that represents that information
 '''
 def timeToCrack(password):
-    requirements = passwordChecker(password)
     
-    return 5
+    results = passwordChecker(password)
+    table = {}
+    pool = 0
+    rate = 100000000
     
+    if results['upper']:
+        pool += 26
+
+    if results ['lower']:
+        pool += 26
     
+    if results ['containsNums']:
+        pool += 10
+    
+    if results['symbols']:
+        pool += len(SYMBOLS)
         
+    table['Pool'] = pool
+    table['Length of password'] = results['numChars']
+    possible = pool ** results['numChars']
+    table['All possible combinations'] = '{:,}'.format(possible)
+    table['Rate'] = '{:,}'.format(rate) + ' passwords / second'
+    #if the number is really small, show decimal places
+    if float(possible) / rate > 1:
+        table['Time needed to crack'] = '{:,.0f} s'.format(float(possible) / rate)
+    else:
+        table['Time needed to crack'] = '{:,.3f} s'.format(float(possible) / rate)
         
-    
-    
+    return table
