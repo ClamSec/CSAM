@@ -10,10 +10,14 @@ how quickly a match can be found
 def dictionaryAttack(password):
     file = open("app/basicDictionary.txt")
     start = timer()
+    count = 0
     for word in file:
+        count += 1
         if word.rstrip() == password:
             stop = timer()
-            return 'Found the password in ' + str(stop - start) + ' seconds.'
+            duration = stop - start
+            #return 'Found the password in ' + str(stop - start) + ' seconds.'
+            return 'Found the password in ' + str(round(duration, 2)) + ' seconds. Tried '+ str(count)+ ' passwords, for an average of '+ str(int(count / duration))+ ' password attempts/second.'
     return "Password not cracked, not in dictionary."
 
 '''
@@ -47,13 +51,15 @@ def bruteForceAttack(password):
         charset += string.digits
         
     print charset
-        
+    count = 0
     gen = bruteforce(charset, numberofchars) 
     start = timer()
-    for p in gen: 
+    for p in gen:
+        count += 1
         if p == password:
             stop = timer()
-            return 'Found the password in ' + str(stop - start) + ' seconds.'
+            duration = stop - start
+            return 'Found the password in ' + str(round(duration, 2)) + ' seconds. Tried '+ str(count)+ ' passwords, for an average of '+ str(int(count / duration))+ ' password attempts/second.'
     return 'not found'
 
 '''
@@ -66,13 +72,20 @@ def bruteforce(charset, maxlength):
         for i in range(1, maxlength + 1)))      
 
 '''
+Determines what requirements a given password satisfy, returns a dictionary where
+keys are requirements and their values are whether or not they have been met
 '''
 def passwordChecker(password):
+    
+    results = {}
+    
     containsLower = False
     containsUpper = False
     containsSymbols = False
     containsNumbers = False
     numberofchars = len(password)
+    
+    results['numchars'] = numberofchars
     
     
     for ch in password:
@@ -85,34 +98,85 @@ def passwordChecker(password):
         elif ch in string.ascii_lowercase:
             containsLower = True
             
-    results = ''
     if numberofchars >= 8:
-        results += 'Minumum number of characters requirement met. '
+        results['minchars'] = True
     else:
-        results += 'Minumum number of characters requirement unmet. '
+        results['minchars'] = False
         
-    if containsUpper and containsLower:
-        results += 'Contains upper and lowercase characters. '
+    if containsUpper:
+        results['upper'] = True
     else:
-        results += 'Does not contain upper and lowercase characters. '
+        results['upper'] = False
+        
+    if containsLower:
+        results['lower'] = True
+    else:
+        results['lower'] = False
         
     if containsNumbers:
-        results += 'Contains numbers. '
+        results['containsNums'] = True
     else:
-        results += 'Does not contain numbers. '
+        results['containsNums'] = False
         
     if containsSymbols:
-        results += 'Contains symbols. '
+        results['symbols'] = True
     else:
-        results += 'Does not contain symbols. '
+        results['symbols'] = False
         
     if dictionaryAttack(password) != 'Password not cracked, not in dictionary.':
-        results += 'Is in a dictionary. '
+        results['dict'] = True
     else:
-        results += 'Is not in a dictionary. '
+        results['dict'] = False
         
     return results
+
+'''
+'''
+def makeComplexityTable(password):
+    results = passwordChecker(password)
+    table = {}
+    if results['minchars']:
+        table['Minimum # of characters'] = u'\u2713'
+    else:
+        table['Minimum # of characters'] = 'x'
+    
+    if results['upper']:
+        table['Uppercase characters'] = u'\u2713'
+    else:
+        table['Uppercase characters'] = 'x'
+    
+    if results ['lower']:
+        table['Lowercase characters'] = u'\u2713'
+    else:
+        table['Lowercase characters'] = 'x'
+    
+    if results ['containsNums']:
+        table['Digits'] = u'\u2713'
+    else:
+        table['Digits'] = 'x'
+    
+    if results['symbols']:
+        table['Symbols'] = u'\u2713'
+    else:
+        table['Symbols'] = 'x'
+    
+    if results['dict']:
+        table['Contained in a dictionary'] = 'x'
+    else:
+        table['Contained in a dictionary'] = u'\u2713'
         
+        
+    return table
+    
+
+'''
+'''
+def timeToCrack(password):
+    requirements = passwordChecker(password)
+    
+    return 5
+    
+    
         
         
     

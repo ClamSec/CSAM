@@ -53,4 +53,4 @@ def passwordStrength():
 @app.route("/password-strength/", methods=["POST"])
 def passwordStrengthPost():
     password = request.form["password"]
-    return render_template("password_cracking_results.html", results=cracker.passwordChecker(password))
+    return render_template("password_strength_results.html", results=cracker.makeComplexityTable(password), time = cracker.timeToCrack(password))
