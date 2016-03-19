@@ -1,0 +1,9 @@
+{% extends "layout.html" %}
+{% block content %}
+<h3 style="margin: 15px 0px 0px 0px;">Social Engineering</h3>
+<hr>
+<ul style="margin: 15px 0px 0px 0px;" class="list-group">
+    <li class="list-group-item"><a href="{{ url_for('phishing') }}">1. Phishing</a></li>
+    <li class="list-group-item"><a href="{{ url_for('detectPhishing') }}">2. Detecting Phishing</a></li>
+</ul>
+{% endblock %}

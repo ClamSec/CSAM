@@ -235,15 +235,15 @@ def timeToCrack(password):
     if results['symbols']:
         pool += len(SYMBOLS)
         
-    table['Pool'] = pool
+    table['Pool of Possible Characters'] = pool
     table['Length of password'] = results['numChars']
     possible = pool ** results['numChars']
     table['All possible combinations'] = '{:,}'.format(possible)
     table['Rate'] = '{:,}'.format(rate) + ' passwords / second'
     #if the number is really small, show decimal places
     if float(possible) / rate > 1:
-        table['Time needed to crack'] = '{:,.0f} s'.format(float(possible) / rate)
+        table['Time needed to crack'] = '{:,.0f} seconds'.format(float(possible) / rate)
     else:
-        table['Time needed to crack'] = '{:,.3f} s'.format(float(possible) / rate)
+        table['Time needed to crack'] = '{:,.3f} seconds'.format(float(possible) / rate)
         
     return table
