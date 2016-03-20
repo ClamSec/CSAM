@@ -40,11 +40,9 @@ def passwordCrackingPost():
     password = request.form["password"]
     option = request.form["option"]
     if option == "dictionary":
-        crackerResults = cracker.dictionaryAttack(password)
-        return render_template("password_cracking_results.html", results=crackerResults)
+        return render_template("password_cracking_results.html", results=cracker.makeCrackTable(password, 'dict'), title="Password Cracking Results")
     else:
-        crackerResults = cracker.bruteForceAttack(password)
-        return render_template("password_cracking_results.html", results=crackerResults)
+        return render_template("password_cracking_results.html", results=cracker.makeCrackTable(password, 'brute'), title="Password Cracking Results")
 
 @app.route("/password-strength/")
 def passwordStrength():
@@ -53,4 +51,21 @@ def passwordStrength():
 @app.route("/password-strength/", methods=["POST"])
 def passwordStrengthPost():
     password = request.form["password"]
-    return render_template("password_cracking_results.html", results=cracker.passwordChecker(password))
+    return render_template("password_strength_results.html", results=cracker.makeComplexityTable(password), time= cracker.timeToCrack(password), title="Password Strength Results")
+
+@app.route("/social-engineering/")
+def socialEngineeringModule():
+	return render_template("socialengineering-module.html", title="Social Engineering")
+
+@app.route("/phishing/")
+def phishing():
+	return render_template("phishing.html", title="Phishing")
+
+@app.route("/detecting-phishing/")
+def detectPhishing():
+	return render_template("detectingphishing.html", title="Detecting Phishing")
+
+@app.route("/default-passwords/")
+def defaultPasswords():
+	return render_template("defaultPasswords.html", title="Default Passwords")
+

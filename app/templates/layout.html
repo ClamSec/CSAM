@@ -45,7 +45,7 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="{{ url_for('index') }}"><b>MODULES</b></a></li>
+            <li class="active"><a href="{{ url_for('index') }}"><b>Modules</b></a></li>
             <li><a href="{{ url_for('about') }}">About</a></li>
             <li><a href="{{ url_for('contact') }}">Contact</a></li>
           </ul>
@@ -55,10 +55,10 @@
 
     <div class="container">
 
-      <div class="starter-template">
+      <div style="margin: 30px 0px 0px 0px;" class="starter-template">
 	<br><br><!--/Don't let your page be blocked by the navbar. -->
-        <h1>Cyber Security Awareness Module</h1>
-        <hr>
+        
+        
         {% block content %}{% endblock %}
       </div>
 
