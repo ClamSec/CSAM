@@ -69,3 +69,6 @@ def detectPhishing():
 def defaultPasswords():
 	return render_template("defaultPasswords.html", title="Default Passwords")
 
+@app.route("/password-completion/")
+def passwordCompletion():
+	return render_template("password-completion.html", title="Password Module Complete")
