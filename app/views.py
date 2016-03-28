@@ -57,6 +57,10 @@ def passwordStrengthPost():
 def defaultPasswords():
     return render_template("defaultPasswords.html", title="Default Passwords")
 
+@app.route("/password-completion/")
+def passwordCompletion():
+        return render_template("password-completion.html", title="Password Module Complete")
+
 # Provide pages for social engineering and phishing.
 
 @app.route("/social-engineering/")
@@ -71,17 +75,7 @@ def phishing():
 def detectingPhishing():
 	return render_template("detectingphishing.html", title="Detecting Phishing")
 
-<<<<<<< HEAD
 # Fake CSU login.
 @app.route("/fake-login/")
 def fakeLogin():
 	return render_template("displaylogin.html")
-=======
-@app.route("/default-passwords/")
-def defaultPasswords():
-	return render_template("defaultPasswords.html", title="Default Passwords")
-
-@app.route("/password-completion/")
-def passwordCompletion():
-	return render_template("password-completion.html", title="Password Module Complete")
->>>>>>> 9551903ee444e357265a9132eb372e697443c10f
