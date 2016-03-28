@@ -53,6 +53,12 @@ def passwordStrengthPost():
     password = request.form["password"]
     return render_template("password_strength_results.html", results=cracker.makeComplexityTable(password), time= cracker.timeToCrack(password), title="Password Strength Results")
 
+@app.route("/default-passwords/")
+def defaultPasswords():
+    return render_template("defaultPasswords.html", title="Default Passwords")
+
+# Provide pages for social engineering and phishing.
+
 @app.route("/social-engineering/")
 def socialEngineeringModule():
 	return render_template("socialengineering-module.html", title="Social Engineering")
@@ -64,8 +70,4 @@ def phishing():
 @app.route("/detecting-phishing/")
 def detectPhishing():
 	return render_template("detectingphishing.html", title="Detecting Phishing")
-
-@app.route("/default-passwords/")
-def defaultPasswords():
-	return render_template("defaultPasswords.html", title="Default Passwords")
 
