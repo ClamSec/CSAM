@@ -19,10 +19,9 @@
 	<br>
 	<b>3. Urgency.</b> Any email that starts with, "DO x NOW OR YOUR ACCOUNT/MONEY/DIGNITY/OPPORTUNITY IS LOST FOREVER!" should immediately be met with suspicion. Scam artists love fear. Fear makes you stupid, pliable, and easy.
 	<br>
-	<b>4. Forged/fake/"funny" links.</b> It's super easy to make links look like legitimate links. For example this link: <a href="http://www.ebay.com">http://www.amazon.com</a> does not lead to where you think it would. You can often check where a link goes by hovering your mouse over a link and checking the bottom left corner of your web browser.   
-	<br><br>
-	For more information, see the <a href= {{ url_for('detectingPhishing') }}>detecting fishing sub-module</a>.
+	<b>4. Forged/fake/"funny" links.</b> It's super easy to make links look like legitimate links. For example, <a href="http://www.ebay.com">http://www.amazon.com</a> does not lead to where you think it would. You can often check where a link goes by hovering your mouse over a link and checking the bottom left corner of your web browser.   
 	</p>
+    
 </div>
 
 {% endblock %}

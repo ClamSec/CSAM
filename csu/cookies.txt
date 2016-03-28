@@ -1,0 +1,5 @@
+# HTTrack Website Copier Cookie File
+# This file format is compatible with Netscape cookies
+llum01.columbusstate.edu	TRUE	/	FALSE	1999999999	UserAgentId	-272878943268623351
+llum01.columbusstate.edu	TRUE	/	FALSE	1999999999	JSESSIONID	1926FF83C3C852BDA545ED7F41E83A8F
+

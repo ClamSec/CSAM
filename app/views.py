@@ -68,6 +68,10 @@ def phishing():
 	return render_template("phishing.html", title="Phishing")
 
 @app.route("/detecting-phishing/")
-def detectPhishing():
+def detectingPhishing():
 	return render_template("detectingphishing.html", title="Detecting Phishing")
 
+# Fake CSU login.
+@app.route("/fake-login/")
+def fakeLogin():
+	return render_template("displaylogin.html")
