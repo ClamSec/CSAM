@@ -1,3 +1,0 @@
-date	size'/'remotesize	flags(request:Update,Range state:File response:Modified,Chunked,gZipped)	statuscode	status ('servermsg')	MIME	Etag|Date	URL	localfile	(from URL)
-12:11:04	11709/11709	---MC-	200	added ('OK')	text/html	date:Mon,%2028%20Mar%202016%2016:11:05%20GMT	https://llum01.columbusstate.edu/cp/home/displaylogin	/tmp/csu/llum01.columbusstate.edu/cp/home/displaylogin.html	(from )
-12:11:05	979/979	---M--	404	error ('Not%20Found')	text/html	date:Mon,%2028%20Mar%202016%2016:11:07%20GMT	https://llum01.columbusstate.edu/robots.txt		(from )
