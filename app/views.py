@@ -73,9 +73,24 @@ def phishing():
 
 @app.route("/detecting-phishing/")
 def detectingPhishing():
-	return render_template("detectingphishing.html", title="Detecting Phishing")
+	return render_template("detectingPhishing.html", title="Detecting Phishing")
 
 # Fake CSU login.
 @app.route("/fake-login/")
 def fakeLogin():
 	return render_template("displaylogin.html")
+
+@app.route("/web-security/")
+def webSecurity():
+	return render_template("web_sec.html")
+
+@app.route("/email-phishing/", methods=['GET', 'POST'])
+def emailPhishing():
+	if request.method == "POST":
+		if request.form['submit'] == 'submit':
+			selected = request.form.getlist('check')
+			if '1' in selected and '2' in selected:
+				return render_template("email_phishing_results.html", results=True)
+			else:
+				return render_template("email_phishing_results.html", results=False)
+	return render_template("email_phishing.html")
