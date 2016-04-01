@@ -21,8 +21,13 @@
 	<br>
 	<b>4. Forged/fake/"funny" links.</b> It's super easy to make links look like legitimate links. For example this link: <a href="http://www.ebay.com">http://www.amazon.com</a> does not lead to where you think it would. You can often check where a link goes by hovering your mouse over a link and checking the bottom left corner of your web browser.   
 	<br><br>
-	For more information, see the <a href= {{ url_for('detectingPhishing') }}>detecting fishing sub-module</a>.
 	</p>
+	<div style="float:left; margin-top: 30px">
+	<a href="{{ url_for('passwordCracking') }}"><button class="btn btn-info"style="margin: 0px 0px 0px 995px;">Go back</button></a>
+	</div>
+	<div style="float:right; margin-top: 30px">
+	<a href="{{ url_for('detectingPhishing') }}"><button class="btn btn-info">Next</button></a>
+
 </div>
 
 {% endblock %}
