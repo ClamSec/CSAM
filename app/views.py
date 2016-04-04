@@ -38,12 +38,13 @@ def passwordCracking():
 @app.route("/password-cracking/", methods=["POST"])
 def passwordCrackingPost():
     password = request.form["password"]
-    option = request.form["option"]
-    if option == "dictionary":
-        return render_template("password_cracking_results.html", results=cracker.makeCrackTable(password, 'dict'), title="Password Cracking Results")
-    else:
-        return render_template("password_cracking_results.html", results=cracker.makeCrackTable(password, 'brute'), title="Password Cracking Results")
-
+    #option = request.form["option"]
+    x = [cracker.makeCrackTable(password, 'dict'), cracker.makeCrackTable(password, 'brute')]
+    #if option == "dictionary":
+    #    return render_template("password_cracking_results.html", results=cracker.makeCrackTable(password, 'dict'), title="Password Cracking Results")
+    #else:
+    #    return render_template("password_cracking_results.html", results=cracker.makeCrackTable(password, 'brute'), title="Password Cracking Results")
+    return render_template("password_cracking_results.html", results=x, title="Password Cracking Results")
 @app.route("/password-strength/")
 def passwordStrength():
 	return render_template("password-strength.html", title="Password Strength")
