@@ -1,0 +1,5 @@
+INFO:werkzeug: * Running on http://0.0.0.0:5555/ (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger pin code: 459-525-253
+INFO:werkzeug:168.26.142.123 - - [16/May/2016 10:45:56] "GET /home/ HTTP/1.1" 200 -
