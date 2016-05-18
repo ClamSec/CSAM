@@ -7,42 +7,33 @@
     <hr>
 
     <p>
-Phishing emails will often take you to fake websites that are mocked up to look like legitimate websites.
-    For example, compare:
-    <br>
-    <a href={{ url_for('fakeLogin') }} target="_blank">CougarNet Login</a>
-    <br>
-    and
-    <br>
-    <a href=https://llum01.columbusstate.edu/cp/home/displaylogin target="_blank">CougarNet Login</a>
-    <br>
-    It should be obvious that the second link is the legitimate login page. In a real attack scenario, the fake webpage would look almost exactly like real one.
-    CHECK THE URL. A fake website will rarely have the correct URL. It will instead have a URL like "columbusstate.college.com" or "columbusstate.co" instead of the "real" URL.
+        Phishing emails will often take you to fake websites that are mocked up to look like legitimate websites.
+        For example, compare:
+        <br>
+        <a href={{ url_for('fakeLogin') }} target="_blank">CougarNet Login</a>
+        <br>
+        and
+        <br>
+        <a href=https://llum01.columbusstate.edu/cp/home/displaylogin target="_blank">CougarNet Login</a>
+        <br>
+        It should be obvious that the second link is the legitimate login page. In a real attack scenario, the fake webpage would look almost exactly like real one.
+        CHECK THE URL. A fake website will rarely have the correct URL. It will instead have a URL like "columbusstate.college.com" or "columbusstate.co" instead of the "real" URL.
     </p>
     <p>
-    For a more realistic scenario, examine the following images: <a href="/static/images/CSU-login1.png" target="_blank">Image 1</a> and <a href="/static/images/CSU-login2.png" target="_blank">Image 2</a>. 
+        For a more realistic scenario, examine the following images: <a href="/static/images/CSU-login1.png" target="_blank">Image 1</a> and <a href="/static/images/CSU-login2.png" target="_blank">Image 2</a>. 
     </p>
     <p>
-    Where you able to tell that the first link was legitimate? The second link did not have a proper columbusstate.edu address. The second link was also not HTTPS secured (browsers usually show a padlock when the site is secured). Look again at <a href="/static/images/CSU-login3.png" target="_blank">Image 1</a> versus <a href="/static/images/CSU-login4.png" target="_blank">Image 2</a>.
+        Where you able to tell that the first link was legitimate? The second link did not have a proper columbusstate.edu address. The second link was also not HTTPS secured (browsers usually show a padlock when the site is secured). Look again at <a href="/static/images/CSU-login3.png" target="_blank">Image 1</a> versus <a href="/static/images/CSU-login4.png" target="_blank">Image 2</a>.
     </p>
     <div style="float:right; margin-top: 20px;">
-    <div style="float:left; margin-right: 20px; ">
-    <a href="{{ url_for('phishing') }}"><button class="btn btn-info">Go back</button></a>
-    </div>
-    <div style="float:right;">
-    <a href="{{ url_for('webSecurity')}}"><button class="btn btn-info">Next</button></a>
-    </div>
+        <div style="float:left; margin-right: 20px; ">
+            <a href="{{ url_for('phishing') }}"><button class="btn btn-info">Go back</button></a>
+        </div>
+        <div style="float:right;">
+            <a href="{{ url_for('webSecurity')}}"><button class="btn btn-info">Next</button></a>
+        </div>
     </div>
 
-    <!--
-    <div style="float:left; margin-top: 30px">
-    <a href="{{ url_for('phishing') }}"><button class="btn btn-info"style="margin: 0px 0px 0px 995px;">Go back</button></a>
-    </div>
-    <div style="float:right; margin-top: 30px">
-    <a href="{{ url_for('webSecurity') }}"><button class="btn btn-info">Next</button></a>
-    </div>
-    -->
-       
 </div>
 
 {% endblock %}

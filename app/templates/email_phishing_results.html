@@ -1,18 +1,17 @@
-
 {% extends "layout.html" %}
 {% block content %}
-    
+
 <h3 style="margin: 15px 0px 0px 0px;">Results</h3>
 <hr>
- {% if results %}
-        <h3>Congratulations, you were correct!</h3>
-    {% else %}
-        <h3>Sorry, but you didn't select all of the correct answers!</h3>
-    {% endif %}
+{% if results %}
+<h3>Congratulations, you were correct!</h3>
+{% else %}
+<h3>Sorry, but you didn't select all of the correct answers!</h3>
+{% endif %}
 <div style="float:left; margin-top: 30px">
-<a href=""><button class="btn btn-info"style="margin: 0px 0px 0px 995px;">Go back</button></a>
+	<a href=""><button class="btn btn-info"style="margin: 0px 0px 0px 995px;">Go back</button></a>
 </div>
 <div style="float:right; margin-top: 30px">
-<a href=""><button class="btn btn-info">Next</button></a>
+	<a href=""><button class="btn btn-info">Next</button></a>
 </div>
 {% endblock %}

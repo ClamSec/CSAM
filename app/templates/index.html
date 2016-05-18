@@ -1,28 +1,28 @@
 {% extends "layout.html" %}
 {% block content %}
-    <div class="jumbotron" >
-      <div class="container">
-        <h1>Cyber Security Awareness Module</h1>
-        <h2>Start learning about password security, social engineering, and web security by clicking the button below.</h2>
-      <p><a class="btn btn-default btn-lg" href="{{ url_for('passwordStrength') }}" role="button">Begin Module&raquo;</a></p>
-      </div>
-    </div>
+<div class="jumbotron" >
+  <div class="container">
+    <h1>Cyber Security Awareness Module</h1>
+    <h2>Start learning about password security, social engineering, and web security by clicking the button below.</h2>
+    <p><a class="btn btn-default btn-lg" href="{{ url_for('passwordStrength') }}" role="button">Begin Module&raquo;</a></p>
+  </div>
+</div>
 
 <!-- Sub-Module Table -->
-    <div class="container">
-    <h2>Sub-module Information</h2>
-    <!-- Row 1 -->
-      <div class="row">
-        <div class="col-md-4">
-          <h3>Password Strength & Cracking</h3>
-          <p>Crack passwords like a real-life attacker</p>
-          <p>Learn more about password strength and what it means to be strong.
-          <p>Discover the dangers of default passwords which may allow an attacker to spy on you in your own home.</p>
-        </div>
-        <div class="col-md-4">
-          <h3>Social Engineering and You</h3>
-          <p>Click the button below. Come on, you can trust me. This module explores the weakest link in most security systems, YOU.</p>
-          <p>Learn how scam artists manipulate people into handing over valuable information and/or compromise their computers.
+<div class="container">
+  <h2>Sub-module Information</h2>
+  <!-- Row 1 -->
+  <div class="row">
+    <div class="col-md-4">
+      <h3>Password Strength & Cracking</h3>
+      <p>Crack passwords like a real-life attacker</p>
+      <p>Learn more about password strength and what it means to be strong.
+        <p>Discover the dangers of default passwords which may allow an attacker to spy on you in your own home.</p>
+      </div>
+      <div class="col-md-4">
+        <h3>Social Engineering and You</h3>
+        <p>Click the button below. Come on, you can trust me. This module explores the weakest link in most security systems, YOU.</p>
+        <p>Learn how scam artists manipulate people into handing over valuable information and/or compromise their computers.
         </div>
         <div class="col-md-4">
           <h3>Web Security</h3>
@@ -30,6 +30,6 @@
           <p>This sub-module shows how browsers can be tightened up to make for a more secure online experience.</p>
         </div>
       </div>
-      </div>
+    </div>
 
-{% endblock %}
+    {% endblock %}
